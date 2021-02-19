@@ -8,6 +8,7 @@
 
 * 461 汉明距离 (Easy)
 * 286 丢失的数字 (Easy)
+* 231 2的幂 (Easy)
 
 
 #### 286 丢失的数字 (Easy)
@@ -37,3 +38,27 @@ class Solution(object):
 *利用数学方法求确实数字
 *先计算0到n的总和
 *再计算数组中的全部和，两者相减为结果
+
+
+#### 231 2的幂 (Easy)
+*用2的幂的性质
+*先判断是否为0或1
+*再判断是否为奇数，是奇数就return False
+*若为偶数就判断是否为2的幂指数
+```python
+class Solution(object):
+    def isPowerOfTwo(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n==0:
+            return False
+        elif n==1:
+            return True
+        while n%2==0:
+            n=n/2
+            if n==1:
+                return True
+        return False
+```
