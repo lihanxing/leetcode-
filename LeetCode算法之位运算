@@ -8,3 +8,32 @@
 
 * 461 汉明距离 (Easy)
 * 286 丢失的数字 (Easy)
+
+
+#### 286 丢失的数字 (Easy)
+*利用线性方式，求确实数字。
+*先对数字进行排序
+*看左右两端数字，是否对应为0或n
+*在查看数组中元素，前一个加1是否为后一个。是的话继续，否的话返回前一个加1
+
+```python
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        nums = sorted(nums)
+        if nums[-1] != n:
+            return n
+        elif nums[0]!=0:
+            return 0
+        for i in range(n):
+            if (nums[i]+1) != nums[i+1]:
+                return (nums[i]+1)
+```
+
+*利用数学方法求确实数字
+*先计算0到n的总和
+*再计算数组中的全部和，两者相减为结果
