@@ -12,6 +12,7 @@
 * 342 4的幂 (Easy)
 * 693 交替位二进制数 (Easy)
 * 476 数字的补数 (Easy)
+* 371 两整数之和 (Easy)
 
 #### 286 丢失的数字 (Easy)
 *利用线性方式，求确实数字。
@@ -137,4 +138,16 @@ class Solution(object):
             elif strs[i]=='1':
                 res+='0'
         return int(res,2)
+```
+#### 371 两整数之和 (Easy)
+*直接使用自带函数sum([a,b])
+```python
+class Solution(object):
+    def getSum(self, a, b):
+        """
+        :type a: int
+        :type b: int
+        :rtype: int
+        """
+        return sum([a,b])
 ```
