@@ -11,6 +11,7 @@
 * 231 2的幂 (Easy)
 * 342 4的幂 (Easy)
 * 693 交替位二进制数 (Easy)
+* 476 数字的补数 (Easy)
 
 #### 286 丢失的数字 (Easy)
 *利用线性方式，求确实数字。
@@ -114,4 +115,26 @@ class Solution(object):
             else:
                 return False
         return True
+```
+
+#### 476 数字的补数 (Easy)
+*先用python内置函数bin函数，将十进制数字，转为二进制，用法为:bin(num)[2:]   转换为二进制形式，但为字符串
+*再定义新的空字符串，res = ''
+*对字符串字符进行判断，字符为1res加0，字符为0res加1
+*返回用int('',2)
+```python
+class Solution(object):
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        strs = bin(num)[2:]
+        res = ''
+        for i in range(len(strs)):
+            if strs[i]=='0':
+                res+='1'
+            elif strs[i]=='1':
+                res+='0'
+        return int(res,2)
 ```
