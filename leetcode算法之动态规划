@@ -12,6 +12,12 @@
 * 198 打家劫舍 (Easy)
 * 213 打家劫舍II (Easy)
 
+7. 股票交易
+* 121 买卖股票的最佳时机 (Easy)
+
+
+
+1. 斐波那契数列
 #### 70 爬楼梯（easy）
 *爬到第n阶的方法是第n-1和n-2阶方法之和。
 *当爬到n-2阶时，有两种方式，其中一种包含在n-1阶方法中
@@ -85,4 +91,47 @@ class Solution(object):
                 dp[i]=max(dp[i-2]+nums[i],dp[i-1])
             return dp[n-1]
         return max(my_rob(nums[:-1]),my_rob(nums[1:]))
+```
+
+7. 股票交易
+
+#### 121 买卖股票的最佳时机 (Easy)
+
+*最简单的方法
+*这种方法的时间复杂度太大，为N**2
+```python
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        n = len(prices)
+        margin = 0
+        for i in range(n):
+            j=i+1
+            while j<n:
+                if prices[j]>=prices[i]:
+                    margin=max((prices[j]-prices[i]),margin)
+                j+=1
+        return margin
+```
+
+*线性方式
+*可以画折线图理解
+```python
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        inf = int(1e9)
+        minprice = inf
+        maxprofit = 0
+
+        for price in prices:
+            maxprofit = max(price-minprice,maxprofit)
+            minprice = min(price,minprice)
+        return maxprofit
 ```
