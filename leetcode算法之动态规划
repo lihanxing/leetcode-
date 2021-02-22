@@ -10,6 +10,7 @@
 1. 菲波那切数列
 * 70 爬楼梯 (Easy)
 * 198 打家劫舍 (Easy)
+* 213 打家劫舍II (Easy)
 
 #### 70 爬楼梯（easy）
 *爬到第n阶的方法是第n-1和n-2阶方法之和。
@@ -54,4 +55,34 @@ class Solution(object):
         dp[1] = max(nums[0],nums[1])
         for i in range(2,n):
             dp[i] = max(dp[i-2]+nums[i],dp[i-1])
+```
+
+#### 213 打家劫舍II (Easy)
+*与198类似
+*将问题分为两类。1是不偷第一个房间，2是不偷最后一个房间
+*解决每一个问题用的都是198的方法
+*最后选出最大值
+```python
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        def my_rob(nums):
+            n = len(nums)
+            if n == 1:
+                return nums[0]
+            dp = [0]*n
+            dp[0] = nums[0]
+            dp[1] = max(nums[0],nums[1])
+            for i in range(2,n):
+                dp[i]=max(dp[i-2]+nums[i],dp[i-1])
+            return dp[n-1]
+        return max(my_rob(nums[:-1]),my_rob(nums[1:]))
 ```
