@@ -233,3 +233,29 @@ class Solution(object):
                     
         return result
 ```
+
+*单调栈
+```python
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        stack = []
+        hashmap = {}
+        result = []
+        for i in nums2:
+            #这里是一直循环，[6,5,4,3,2,1,7]中，7是最后一位
+            #当7进入后，栈中元素会依次到达栈顶与7比较，在这过程中循环持续进行
+            while stack and stack[-1]<i:
+                hashmap[stack.pop()] = i
+            stack.append(i)
+        while stack:
+            hashmap[stack.pop()]=-1
+        for i in nums1:
+            result.append(hashmap[i])
+        return result
+
+```
