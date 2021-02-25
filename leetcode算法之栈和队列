@@ -22,6 +22,7 @@
 * 225 用队列实现栈 (Easy)
 * 155 最小栈 (Easy)
 * 1021 删除最外层的括号 (Easy)
+* 496 下一个更大的元素 (Easy)
 
 
 ####  232 用栈实现队列 (Easy)
@@ -199,4 +200,36 @@ class Solution(object):
                 stack.pop()++
                 if stack: res+=c
         return res
+```
+
+#### 496 下一个更大的元素 (Easy)
+*暴力解决
+```python
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        #nums1的长度
+        len1 = len(nums1)
+
+        result = []
+
+        for i in nums1:
+            for j in range(len2):
+                if nums2[j]==i:
+                    k = j+1
+                    ans = 0
+                    while k<len2:
+                        if nums2[k]>i:
+                            ans = 1
+                            result.append(nums2[k])
+                            break
+                        k+=1
+                    if ans==0:
+                        result.append(-1)
+                    
+        return result
 ```
