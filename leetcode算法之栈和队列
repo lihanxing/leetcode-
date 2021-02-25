@@ -21,6 +21,7 @@
 * 232 用栈实现队列 (Easy)
 * 225 用队列实现栈 (Easy)
 * 155 最小栈 (Easy)
+* 1021 删除最外层的括号 (Easy)
 
 
 ####  232 用栈实现队列 (Easy)
@@ -175,4 +176,27 @@ class MinStack(object):
             return min(self.stack)
         else:
             return None
+```
+
+#### 1021 删除最外层的括号 (Easy)
+*用一个栈就好
+*当遇到(时进站
+*当遇到)时出栈
+*当栈为空时，说明一个大括号判断完毕
+```python
+class Solution(object):
+    def removeOuterParentheses(self, S):
+        """
+        :type S: str
+        :rtype: str
+        """
+        res,stack="",[]
+        for c in S:
+            if c=='(':
+                if stack: res+=c
+                stack.append(c)
+            elif c==')':
+                stack.pop()++
+                if stack: res+=c
+        return res
 ```
