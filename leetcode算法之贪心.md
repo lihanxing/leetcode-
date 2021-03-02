@@ -10,6 +10,7 @@
 贪心策略的选择必须具备**无后效性**，也就是说某个状态以前的过程不会影响以后的状态，只与当前状态有关。
 
 * 455 分发饼干  (Easy)
+* 665 非递减数列 (Easy)
 
 
 
@@ -41,4 +42,30 @@ class Solution(object):
                 j+=1
             i+=1
         return count
+```
+
+#### 665 非递减数列 (Easy)
+*使用贪心算法
+*定义一个标志，这个标志只能变换一次，变换后代表着return False
+*使用瞻前顾后的思想.
+```python
+class Solution(object):
+    def checkPossibility(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        n = len(nums)
+        flag = True
+        for i in range(n-1):
+            if nums[i]>nums[i+1]:
+                if flag == False:
+                    return False
+                if i == 0 or nums[i+1]>=nums[i-1]:
+                    nums[i] = nums[i+1]
+                else:
+                    nums[i+1] = nums[i]
+                flag = False
+        return True
+
 ```
