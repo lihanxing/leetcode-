@@ -61,7 +61,7 @@ class Solution:
         print(left_count_max,left_count_min,right_count_max,right_count_min)
         return abs(left_count_max-left_count_min) <= 1 and abs(right_count_max-right_count_min)<=1
 ```
-*正确版本
+*正确版本1
 ```python
 class Solution:
     def isBalanced(self, root):
@@ -77,4 +77,17 @@ class Solution:
         
         height(root)
         return self.res
+```
+*正确版本2
+```python
+class Solution(object):
+    def isBalanced(self, root):
+        if not root:
+            return True
+        return self.isBalanced(root.left) and self.isBalanced(root.right) and abs(self.getheight(root.left)-self.getheight(root.right))<=1
+
+    def getheight(self,root):
+        if not root:
+            return 0
+        return max(self.getheight(root.left),self.getheight(root.right))+1
 ```
