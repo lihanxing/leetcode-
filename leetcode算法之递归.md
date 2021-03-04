@@ -6,6 +6,7 @@
 
 ## 递归
 * 104 二叉树的最大深度  (Easy)
+* 110 平衡二叉树 (Easy)
 
 
 #### 104 二叉树的最大深度  (Easy)
@@ -24,4 +25,56 @@ class Solution(object):
             left_count = self.maxDepth(root.left)
             right_count = self.maxDepth(root.right)
             return max(left_count,right_count)+1
+```
+
+#### 110 平衡二叉树 (Easy)
+*我自己做的错误版本
+```python
+class Solution:
+    def isBalanced(self, root):
+
+        def height_max(root):
+            if root==None:
+                return 0
+            else:
+                left_count = height_max(root.left)
+                right_count = height_max(root.right)
+                return max(left_count,right_count)+1
+        
+        def height_min(root):
+            if root==None:
+                return 0
+            else:
+                left_count = height_min(root.left)
+                right_count = height_min(root.right)
+                return min(left_count,right_count)+1
+
+
+        if root == None:
+            return True
+        
+        left_count_max = height_max(root.left)+1
+        right_count_max = height_max(root.right)+1
+        left_count_min = height_min(root.left)+1
+        right_count_min = height_min(root.right)+1
+
+        print(left_count_max,left_count_min,right_count_max,right_count_min)
+        return abs(left_count_max-left_count_min) <= 1 and abs(right_count_max-right_count_min)<=1
+```
+*正确版本
+```python
+class Solution:
+    def isBalanced(self, root):
+        self.res = True
+        def height(root):
+            if root == None:
+                return 0
+            left = height(root.left)+1
+            right = height(root.right)+1
+            if abs(left-right)>1:
+                self.res = False
+            return max(left,right)
+        
+        height(root)
+        return self.res
 ```
