@@ -1,14 +1,10 @@
----
-
----
-
-## C++
+# **C++**
 
 ### string类型
 
 在c++中，string被设定为可变类型，可以实现原地修改。
 
-例如：![1621756453646](.\C++笔记.assets\1621756453646.png)
+例如：![1621756453646](C++笔记.assets\1621756453646.png)
 
 
 
@@ -42,6 +38,8 @@
 
   
 
+## 容器
+
 ### Vector
 
 Vector(向量)是一个封装了动态大小数组的顺序容器。它能够存放各种类型的对象。
@@ -66,13 +64,21 @@ Vector(向量)是一个封装了动态大小数组的顺序容器。它能够存
 
 ```
 vector逆序：
-vector <int> n;
+vector <int> n;//定义一个空的int型vector
 reverse(n.begin(),n.end());
 ```
 
 
 
-在使用过程，vector可以当做可变长数组使用。
+在使用过程，vector可以当做可变长数组使用。vector中的增加，可以有insert和push_back。insert是插入元素到某个位置中，push_back是在最后添加一个元素。
+
+[事例](https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/submissions/)这个题会加强对vector和数组的理解
+
+
+
+### queue
+
+队列，是一种先进先出的结构。[参考](https://zh.cppreference.com/w/cpp/container/queue)
 
 
 
@@ -112,7 +118,16 @@ c++/c数组初始化为0有一下方法:
    }
    ```
 
-   
 
-   
+
+C++获取数组长度方法 [参考](https://www.runoob.com/note/29489)
+
+```
+若nums为数组
+nums.size()就是数组的大小
+```
+
+
+
+![image-20210610150704973](C++笔记.assets/image-20210610150704973.png)
 
